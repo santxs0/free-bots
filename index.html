@@ -7,228 +7,230 @@
 
 <style>
 
-*{
-box-sizing:border-box;
-margin:0;
-padding:0;
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, #0f0f1a, #14142b, #1f1f3d);
+  background-size: 400% 400%;
+  animation: gradientMove 12s ease infinite;
+  color: white;
+  text-align: center;
+  overflow-x: hidden;
 }
 
-body{
-font-family:'Segoe UI',sans-serif;
-background:linear-gradient(135deg,#0f0f1a,#14142b,#1f1f3d);
-background-size:400% 400%;
-animation:gradientMove 12s ease infinite;
-color:white;
-overflow-x:hidden;
-text-align:center;
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
-@keyframes gradientMove{
-0%{background-position:0% 50%;}
-50%{background-position:100% 50%;}
-100%{background-position:0% 50%;}
-}
+/* HEADER */
 
-/* NAVBAR */
-
-header{
-display:flex;
-align-items:center;
-justify-content:space-between;
-padding:20px 40px;
-position:relative;
-z-index:9999;
-}
-
-.logo{
-font-size:1.4rem;
-font-weight:700;
-}
-
-/* MENU BOTÃO */
-
-.menu-btn{
-cursor:pointer;
-}
-
-.menu-btn div{
-width:28px;
-height:3px;
-background:white;
-margin:5px;
-border-radius:3px;
+header {
+  height: 80px;
+  position: relative;
+  z-index: 9999;
 }
 
 /* MENU */
 
-.dropdown{
-position:absolute;
-top:70px;
-right:40px;
-background:rgba(32,32,64,0.95);
-backdrop-filter:blur(15px);
-border-radius:14px;
-overflow:hidden;
-transform:scaleY(0);
-transform-origin:top;
-transition:0.3s;
-box-shadow:0 15px 40px rgba(0,0,0,0.6);
-z-index:9999;
+.menu-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
+  z-index: 9999;
 }
 
-.dropdown a{
-display:block;
-padding:14px 30px;
-text-decoration:none;
-color:white;
-transition:0.3s;
+.menu-btn div {
+  width: 28px;
+  height: 3px;
+  background: white;
+  margin: 5px 0;
+  border-radius: 3px;
 }
 
-.dropdown a:hover{
-background:#5865F2;
+.dropdown {
+  position: absolute;
+  top: 65px;
+  right: 20px;
+  background: rgba(32,32,64,0.98);
+  backdrop-filter: blur(15px);
+  border-radius: 14px;
+  overflow: hidden;
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: 0.3s ease;
+  z-index: 9999;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.6);
 }
 
-.dropdown.active{
-transform:scaleY(1);
+.dropdown a {
+  display: block;
+  padding: 14px 25px;
+  color: white;
+  text-decoration: none;
+  transition: 0.3s;
 }
 
-/* HERO */
-
-.hero{
-margin-top:40px;
-padding:0 20px;
+.dropdown a:hover {
+  background: #5865F2;
 }
 
-.hero h1{
-font-size:3rem;
-margin-bottom:10px;
-animation:fadeUp 1s ease forwards;
+.dropdown.active {
+  transform: scaleY(1);
 }
 
-.hero p{
-opacity:0.7;
-font-size:1.1rem;
-margin-bottom:40px;
-animation:fadeUp 1.3s ease forwards;
+/* TITULO */
+
+h1 {
+  margin-top: 10px;
+  font-size: 2.8rem;
+  font-weight: 700;
+  opacity: 0;
+  transform: translateY(40px);
+  animation: fadeTitle 1s ease forwards;
+}
+
+@keyframes fadeTitle {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+p {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeSub 1.2s ease forwards;
+  animation-delay: 0.3s;
+  margin-bottom: 20px;
+}
+
+@keyframes fadeSub {
+  to {
+    opacity: 0.7;
+    transform: translateY(0);
+  }
 }
 
 /* VANTAGENS */
 
-.vantagens{
-display:flex;
-justify-content:center;
-gap:30px;
-flex-wrap:wrap;
-margin-bottom:50px;
+.vantagens {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
 }
 
-.vantagem{
-background:rgba(32,32,64,0.6);
-padding:15px 25px;
-border-radius:12px;
-font-size:0.95rem;
+.vantagem {
+  background: rgba(32,32,64,0.7);
+  padding: 12px 20px;
+  border-radius: 12px;
+  font-size: 0.9rem;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: vantagensAnim 0.8s ease forwards;
 }
 
-/* CONTAINER 2x2 */
+.vantagem:nth-child(1){ animation-delay:0.4s }
+.vantagem:nth-child(2){ animation-delay:0.6s }
+.vantagem:nth-child(3){ animation-delay:0.8s }
+.vantagem:nth-child(4){ animation-delay:1s }
 
-.container{
-display:grid;
-grid-template-columns:repeat(2,340px);
-gap:40px;
-justify-content:center;
-padding:20px;
+@keyframes vantagensAnim{
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
 }
 
-/* CARDS */
+/* CONTAINER */
 
-.card{
-background:rgba(32,32,64,0.8);
-backdrop-filter:blur(15px);
-border-radius:20px;
-padding:30px;
-width:340px;
-box-shadow:0 10px 40px rgba(0,0,0,0.5);
-transition:0.4s;
-animation:fadeUp 1s ease forwards;
-border:1px solid rgba(255,255,255,0.05);
+.container {
+  display: grid;
+  grid-template-columns: repeat(2, 340px);
+  justify-content: center;
+  gap: 40px;
+  padding: 20px;
 }
 
-.card:hover{
-transform:translateY(-10px) scale(1.04);
-border:1px solid #5865F2;
-box-shadow:0 20px 60px rgba(0,0,0,0.7);
+/* CARDS (EXATAMENTE COMO ESTAVA) */
+
+.card {
+  background: rgba(32,32,64,0.8);
+  backdrop-filter: blur(15px);
+  border-radius: 20px;
+  padding: 30px;
+  width: 340px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+  transition: 0.4s ease;
+  animation: fadeUp 0.8s ease forwards;
+  opacity: 0;
+  transform: translateY(40px);
 }
 
-.card h2{
-margin-bottom:10px;
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-/* LISTA */
-
-.features{
-list-style:none;
-text-align:left;
-margin-top:15px;
+.card:hover {
+  transform: translateY(-15px) scale(1.03);
+  box-shadow: 0 15px 50px rgba(0,0,0,0.7);
 }
 
-.features li{
-margin-bottom:8px;
-font-size:0.95rem;
+.features {
+  list-style: none;
+  padding: 0;
+  text-align: left;
+  line-height: 1.7;
 }
 
-.features li::before{
-content:"✔ ";
-color:#00ff88;
+.features li {
+  margin-bottom: 8px;
 }
 
-/* BOTÃO */
-
-.btn{
-margin-top:20px;
-padding:14px 28px;
-border:none;
-border-radius:12px;
-background:linear-gradient(45deg,#5865F2,#7b86ff);
-color:white;
-font-size:1rem;
-font-weight:600;
-cursor:pointer;
-transition:0.3s;
+.features li::before {
+  content: "✔ ";
+  color: #00ff88;
+  font-weight: bold;
 }
 
-.btn:hover{
-transform:scale(1.07);
-box-shadow:0 0 25px #5865F2;
+.btn {
+  margin-top: 25px;
+  padding: 16px 32px;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(45deg,#5865F2,#7b86ff);
+  color: white;
+  font-size: 1.05rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  transform: scale(1.08);
+  box-shadow: 0 0 25px #5865F2;
 }
 
 /* TERMOS */
 
-#termos{
-display:none;
-justify-content:center;
-padding:40px;
+#termos {
+  display: none;
+  justify-content: center;
+  padding: 40px;
 }
 
 /* FOOTER */
 
-footer{
-text-align:center;
-margin:60px 0 30px;
-opacity:0.7;
-font-size:0.9rem;
-}
-
-/* ANIMAÇÃO */
-
-@keyframes fadeUp{
-from{
-opacity:0;
-transform:translateY(40px);
-}
-to{
-opacity:1;
-transform:translateY(0);
-}
+footer {
+  margin: 60px 0 30px;
+  opacity: 0;
+  animation: fadeMenu 1.5s ease forwards;
 }
 
 /* MOBILE */
@@ -243,24 +245,13 @@ grid-template-columns:1fr;
 width:90%;
 }
 
-.hero h1{
-font-size:2.2rem;
-}
-
-header{
-padding:20px;
-}
-
 }
 
 </style>
 </head>
-
 <body>
 
 <header>
-
-<div class="logo">🤖 Thzin Bots</div>
 
 <div class="menu-btn" onclick="toggleMenu()">
 <div></div>
@@ -276,42 +267,35 @@ padding:20px;
 
 </header>
 
-<section class="hero">
-
 <h1>🚀 Painel de Bots Gratuitos</h1>
 <p>Escolha um bot abaixo e convide para seu servidor</p>
 
 <div class="vantagens">
-
-<div class="vantagem">⚡ 24h Online</div>
-<div class="vantagem">🔒 Segurança</div>
-<div class="vantagem">⚙️ Fácil Configuração</div>
-<div class="vantagem">💬 Suporte</div>
-
+<div class="vantagem">⚡ 24h online</div>
+<div class="vantagem">🔒 Segurança de dados</div>
+<div class="vantagem">⚙️ Fácil configuração</div>
+<div class="vantagem">💬 Suporte ativo</div>
 </div>
-
-</section>
 
 <div class="container" id="home">
 
 <div class="card">
-
 <h2>💰 Salles Bot</h2>
 
 <ul class="features">
 <li>Bot de vendas</li>
 <li>Pagamento manual sem taxa</li>
 <li>Sistema completo de carrinhos</li>
-<li>Sistema de logs e cupons</li>
-<li>Sistema de feedback</li>
-<li>Ranking de clientes</li>
+<li>Sistema completo de logs e cupons</li>
+<li>Sistema completo de feedback</li>
+<li>Sistema completo de ranking e perfil de cliente</li>
 <li>Segurança de dados</li>
 <li>Divulgação na bio do bot</li>
 </ul>
 
 <button class="btn"
-onclick="window.location.href='https://discord.com/oauth2/authorize?client_id=1474231946400760020&permissions=8&scope=bot+applications.commands'">
-🤖 Convidar Bot
+onclick="window.location.href='https://discord.com/oauth2/authorize?client_id=1474231946400760020&permissions=8&integration_type=0&scope=bot+applications.commands'">
+Convidar Bot
 </button>
 
 </div>
@@ -321,18 +305,18 @@ onclick="window.location.href='https://discord.com/oauth2/authorize?client_id=14
 <h2>🎫 E-Pro Bot</h2>
 
 <ul class="features">
+<li>Bot de tickets</li>
 <li>Sistema completo de tickets</li>
 <li>Configurações simples</li>
-<li>Painel com botões</li>
-<li>Menu com várias opções</li>
-<li>Sistema de logs</li>
-<li>Sistema de feedback</li>
+<li>Sistema de painel com botão</li>
+<li>Sistema de menu com várias opções</li>
+<li>Sistema de logs e feedback</li>
 <li>Divulgação na bio do bot</li>
 </ul>
 
 <button class="btn"
-onclick="window.location.href='https://discord.com/oauth2/authorize?client_id=1470596365930332242&permissions=8&scope=bot+applications.commands'">
-🤖 Convidar Bot
+onclick="window.location.href='https://discord.com/oauth2/authorize?client_id=1470596365930332242&permissions=8&integration_type=0&scope=bot+applications.commands'">
+Convidar Bot
 </button>
 
 </div>
@@ -346,11 +330,11 @@ onclick="window.location.href='https://discord.com/oauth2/authorize?client_id=14
 <h2>📜 Termos de Uso</h2>
 
 <ul class="features">
-<li>Não utilize os bots para atividades maliciosas</li>
+<li>Não utilize os bots para esquemas maliciosos ou fraudulentos</li>
 <li>Proibido uso ilegal</li>
-<li>O acesso pode ser revogado em caso de abuso</li>
+<li>Acesso pode ser revogado a qualquer momento</li>
 <li>Algumas informações podem ser armazenadas para funcionamento</li>
-<li>Ao utilizar os bots você concorda com os termos</li>
+<li>Ao usar você concorda com os termos</li>
 </ul>
 
 </div>
@@ -358,7 +342,7 @@ onclick="window.location.href='https://discord.com/oauth2/authorize?client_id=14
 </div>
 
 <footer>
-© 2026 - Thzin Store | Bots Gratuitos
+© 2026 - Thzin Store | Bots Gratuitos.
 </footer>
 
 <script>
