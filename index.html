@@ -50,6 +50,26 @@
       opacity: 0.9;
     }
 
+    /* 🔥 Lista estilizada do Salles Bot */
+    .features {
+      list-style: none;
+      padding-left: 0;
+      text-align: left;
+      margin-top: 15px;
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    .features li {
+      margin-bottom: 6px;
+    }
+
+    .features li::before {
+      content: "✔ ";
+      color: #00ff88;
+      font-weight: bold;
+    }
+
     .btn {
       margin-top: 20px;
       padding: 12px 20px;
@@ -83,16 +103,18 @@
     <!-- Salles Bot -->
     <div class="card">
       <h2>💰 Salles Bot</h2>
-      <p>
-- Bot de vendas.
-- Pagamento manual (sem nenhuma taxa).
-- Sistema completo de carrinhos.
-- Sistema completo de logs e cupons.
-- Sistema completo de feedback.
-- Sistema de ranking e perfil de compra do usuário.
-- Segurança dos dados.
-- Divulgação na bio(sobre mim) do bot.
-      </p>
+
+      <ul class="features">
+        <li>Bot de vendas</li>
+        <li>Pagamento manual (sem nenhuma taxa)</li>
+        <li>Sistema completo de carrinhos</li>
+        <li>Sistema completo de logs e cupons</li>
+        <li>Sistema completo de feedback</li>
+        <li>Sistema de ranking e perfil de compra</li>
+        <li>Segurança dos dados</li>
+        <li>Divulgação na bio (sobre mim) do bot</li>
+      </ul>
+
       <button class="btn"
         onclick="window.location.href='https://discord.com/oauth2/authorize?client_id=1474231946400760020&permissions=8&integration_type=0&scope=bot+applications.commands'">
         Convidar Bot
