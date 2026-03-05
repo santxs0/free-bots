@@ -5,9 +5,6 @@
 <title>Painel de Bots Gratuitos</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta name="description" content="Bots gratuitos para Discord: vendas, tickets e automação.">
-<meta name="keywords" content="discord bot, bot discord grátis, bot vendas discord">
-
 <style>
 
 *{
@@ -23,6 +20,7 @@ background-size:400% 400%;
 animation:gradientMove 12s ease infinite;
 color:white;
 overflow-x:hidden;
+text-align:center;
 }
 
 @keyframes gradientMove{
@@ -39,12 +37,15 @@ align-items:center;
 justify-content:space-between;
 padding:20px 40px;
 position:relative;
+z-index:9999;
 }
 
 .logo{
 font-size:1.4rem;
 font-weight:700;
 }
+
+/* MENU BOTÃO */
 
 .menu-btn{
 cursor:pointer;
@@ -63,7 +64,7 @@ border-radius:3px;
 .dropdown{
 position:absolute;
 top:70px;
-left:40px;
+right:40px;
 background:rgba(32,32,64,0.95);
 backdrop-filter:blur(15px);
 border-radius:14px;
@@ -72,6 +73,7 @@ transform:scaleY(0);
 transform-origin:top;
 transition:0.3s;
 box-shadow:0 15px 40px rgba(0,0,0,0.6);
+z-index:9999;
 }
 
 .dropdown a{
@@ -93,7 +95,6 @@ transform:scaleY(1);
 /* HERO */
 
 .hero{
-text-align:center;
 margin-top:40px;
 padding:0 20px;
 }
@@ -128,13 +129,13 @@ border-radius:12px;
 font-size:0.95rem;
 }
 
-/* CONTAINER */
+/* CONTAINER 2x2 */
 
 .container{
-display:flex;
-flex-wrap:wrap;
-justify-content:center;
+display:grid;
+grid-template-columns:repeat(2,340px);
 gap:40px;
+justify-content:center;
 padding:20px;
 }
 
@@ -149,6 +150,7 @@ width:340px;
 box-shadow:0 10px 40px rgba(0,0,0,0.5);
 transition:0.4s;
 animation:fadeUp 1s ease forwards;
+border:1px solid rgba(255,255,255,0.05);
 }
 
 .card:hover{
@@ -160,6 +162,8 @@ box-shadow:0 20px 60px rgba(0,0,0,0.7);
 .card h2{
 margin-bottom:10px;
 }
+
+/* LISTA */
 
 .features{
 list-style:none;
@@ -229,14 +233,18 @@ transform:translateY(0);
 
 /* MOBILE */
 
-@media(max-width:600px){
+@media(max-width:700px){
 
-.hero h1{
-font-size:2.2rem;
+.container{
+grid-template-columns:1fr;
 }
 
 .card{
 width:90%;
+}
+
+.hero h1{
+font-size:2.2rem;
 }
 
 header{
@@ -276,9 +284,9 @@ padding:20px;
 <div class="vantagens">
 
 <div class="vantagem">⚡ 24h Online</div>
-<div class="vantagem">🔒 Segurança de dados</div>
-<div class="vantagem">⚙️ Configuração fácil</div>
-<div class="vantagem">💬 Suporte ativo</div>
+<div class="vantagem">🔒 Segurança</div>
+<div class="vantagem">⚙️ Fácil Configuração</div>
+<div class="vantagem">💬 Suporte</div>
 
 </div>
 
@@ -294,9 +302,9 @@ padding:20px;
 <li>Bot de vendas</li>
 <li>Pagamento manual sem taxa</li>
 <li>Sistema completo de carrinhos</li>
-<li>Logs e cupons</li>
-<li>Feedback de clientes</li>
-<li>Ranking de compradores</li>
+<li>Sistema de logs e cupons</li>
+<li>Sistema de feedback</li>
+<li>Ranking de clientes</li>
 <li>Segurança de dados</li>
 <li>Divulgação na bio do bot</li>
 </ul>
@@ -315,8 +323,8 @@ onclick="window.location.href='https://discord.com/oauth2/authorize?client_id=14
 <ul class="features">
 <li>Sistema completo de tickets</li>
 <li>Configurações simples</li>
-<li>Painéis com botões</li>
-<li>Menu com múltiplas opções</li>
+<li>Painel com botões</li>
+<li>Menu com várias opções</li>
 <li>Sistema de logs</li>
 <li>Sistema de feedback</li>
 <li>Divulgação na bio do bot</li>
@@ -341,8 +349,8 @@ onclick="window.location.href='https://discord.com/oauth2/authorize?client_id=14
 <li>Não utilize os bots para atividades maliciosas</li>
 <li>Proibido uso ilegal</li>
 <li>O acesso pode ser revogado em caso de abuso</li>
-<li>Algumas informações podem ser armazenadas para funcionamento do sistema</li>
-<li>Ao utilizar os bots você concorda com estes termos</li>
+<li>Algumas informações podem ser armazenadas para funcionamento</li>
+<li>Ao utilizar os bots você concorda com os termos</li>
 </ul>
 
 </div>
@@ -366,7 +374,7 @@ toggleMenu();
 }
 
 function showHome(){
-document.getElementById("home").style.display="flex";
+document.getElementById("home").style.display="grid";
 document.getElementById("termos").style.display="none";
 toggleMenu();
 }
