@@ -5,294 +5,372 @@
 <title>Painel de Bots Gratuitos</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<meta name="description" content="Bots gratuitos para Discord: vendas, tickets e automação.">
+<meta name="keywords" content="discord bot, bot discord grátis, bot vendas discord">
+
 <style>
-body {
-  margin: 0;
-  font-family: 'Segoe UI', sans-serif;
-  background: linear-gradient(135deg, #0f0f1a, #14142b, #1f1f3d);
-  background-size: 400% 400%;
-  animation: gradientMove 12s ease infinite;
-  color: white;
-  text-align: center;
-  overflow-x: hidden;
+
+*{
+box-sizing:border-box;
+margin:0;
+padding:0;
 }
 
-@keyframes gradientMove {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+body{
+font-family:'Segoe UI',sans-serif;
+background:linear-gradient(135deg,#0f0f1a,#14142b,#1f1f3d);
+background-size:400% 400%;
+animation:gradientMove 12s ease infinite;
+color:white;
+overflow-x:hidden;
 }
 
-/* HEADER */
-header {
-  height: 80px;
-  position: relative;
-  z-index: 2000;
+@keyframes gradientMove{
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
+}
+
+/* NAVBAR */
+
+header{
+display:flex;
+align-items:center;
+justify-content:space-between;
+padding:20px 40px;
+position:relative;
+}
+
+.logo{
+font-size:1.4rem;
+font-weight:700;
+}
+
+.menu-btn{
+cursor:pointer;
+}
+
+.menu-btn div{
+width:28px;
+height:3px;
+background:white;
+margin:5px;
+border-radius:3px;
 }
 
 /* MENU */
-.menu-btn {
-  position: absolute;
-  top: 20px;
-  left: 20px;
-  cursor: pointer;
-  z-index: 3000;
-  opacity: 0;
-  transform: translateY(-20px);
-  animation: fadeMenu 0.8s ease forwards;
+
+.dropdown{
+position:absolute;
+top:70px;
+left:40px;
+background:rgba(32,32,64,0.95);
+backdrop-filter:blur(15px);
+border-radius:14px;
+overflow:hidden;
+transform:scaleY(0);
+transform-origin:top;
+transition:0.3s;
+box-shadow:0 15px 40px rgba(0,0,0,0.6);
 }
 
-@keyframes fadeMenu {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.dropdown a{
+display:block;
+padding:14px 30px;
+text-decoration:none;
+color:white;
+transition:0.3s;
 }
 
-.menu-btn div {
-  width: 28px;
-  height: 3px;
-  background: white;
-  margin: 5px 0;
-  border-radius: 3px;
+.dropdown a:hover{
+background:#5865F2;
 }
 
-.dropdown {
-  position: absolute;
-  top: 65px;
-  left: 20px;
-  background: rgba(32,32,64,0.98);
-  backdrop-filter: blur(15px);
-  border-radius: 14px;
-  overflow: hidden;
-  transform: scaleY(0);
-  transform-origin: top;
-  transition: 0.3s ease;
-  z-index: 4000;
-  box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+.dropdown.active{
+transform:scaleY(1);
 }
 
-.dropdown a {
-  display: block;
-  padding: 14px 25px;
-  color: white;
-  text-decoration: none;
-  transition: 0.3s;
+/* HERO */
+
+.hero{
+text-align:center;
+margin-top:40px;
+padding:0 20px;
 }
 
-.dropdown a:hover {
-  background: #5865F2;
+.hero h1{
+font-size:3rem;
+margin-bottom:10px;
+animation:fadeUp 1s ease forwards;
 }
 
-.dropdown.active {
-  transform: scaleY(1);
+.hero p{
+opacity:0.7;
+font-size:1.1rem;
+margin-bottom:40px;
+animation:fadeUp 1.3s ease forwards;
 }
 
-/* TÍTULO */
-h1 {
-  margin-top: 10px;
-  font-size: 2.8rem;
-  font-weight: 700;
-  opacity: 0;
-  transform: translateY(40px);
-  animation: fadeTitle 1s ease forwards;
+/* VANTAGENS */
+
+.vantagens{
+display:flex;
+justify-content:center;
+gap:30px;
+flex-wrap:wrap;
+margin-bottom:50px;
 }
 
-@keyframes fadeTitle {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-p {
-  opacity: 0;
-  transform: translateY(20px);
-  animation: fadeSub 1.2s ease forwards;
-  animation-delay: 0.3s;
-  margin-bottom: 40px;
-}
-
-@keyframes fadeSub {
-  to {
-    opacity: 0.7;
-    transform: translateY(0);
-  }
+.vantagem{
+background:rgba(32,32,64,0.6);
+padding:15px 25px;
+border-radius:12px;
+font-size:0.95rem;
 }
 
 /* CONTAINER */
-.container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 40px;
-  padding: 20px;
+
+.container{
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:40px;
+padding:20px;
 }
 
 /* CARDS */
-.card {
-  background: rgba(32,32,64,0.8);
-  backdrop-filter: blur(15px);
-  border-radius: 20px;
-  padding: 30px;
-  width: 340px;
-  box-shadow: 0 10px 40px rgba(0,0,0,0.5);
-  transition: 0.4s ease;
-  animation: fadeUp 0.8s ease forwards;
-  opacity: 0;
-  transform: translateY(40px);
+
+.card{
+background:rgba(32,32,64,0.8);
+backdrop-filter:blur(15px);
+border-radius:20px;
+padding:30px;
+width:340px;
+box-shadow:0 10px 40px rgba(0,0,0,0.5);
+transition:0.4s;
+animation:fadeUp 1s ease forwards;
 }
 
-@keyframes fadeUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.card:hover{
+transform:translateY(-10px) scale(1.04);
+border:1px solid #5865F2;
+box-shadow:0 20px 60px rgba(0,0,0,0.7);
 }
 
-.card:hover {
-  transform: translateY(-15px) scale(1.03);
-  box-shadow: 0 15px 50px rgba(0,0,0,0.7);
+.card h2{
+margin-bottom:10px;
 }
 
-.features {
-  list-style: none;
-  padding: 0;
-  text-align: left;
-  line-height: 1.7;
+.features{
+list-style:none;
+text-align:left;
+margin-top:15px;
 }
 
-.features li {
-  margin-bottom: 8px;
+.features li{
+margin-bottom:8px;
+font-size:0.95rem;
 }
 
-.features li::before {
-  content: "✔ ";
-  color: #00ff88;
-  font-weight: bold;
+.features li::before{
+content:"✔ ";
+color:#00ff88;
 }
 
-.btn {
-  margin-top: 25px;
-  padding: 16px 32px;
-  border: none;
-  border-radius: 12px;
-  background: linear-gradient(45deg,#5865F2,#7b86ff);
-  color: white;
-  font-size: 1.05rem;
-  cursor: pointer;
-  transition: 0.3s;
+/* BOTÃO */
+
+.btn{
+margin-top:20px;
+padding:14px 28px;
+border:none;
+border-radius:12px;
+background:linear-gradient(45deg,#5865F2,#7b86ff);
+color:white;
+font-size:1rem;
+font-weight:600;
+cursor:pointer;
+transition:0.3s;
 }
 
-.btn:hover {
-  transform: scale(1.08);
-  box-shadow: 0 0 25px #5865F2;
+.btn:hover{
+transform:scale(1.07);
+box-shadow:0 0 25px #5865F2;
 }
 
 /* TERMOS */
-#termos {
-  display: none;
-  justify-content: center;
-  padding: 40px;
+
+#termos{
+display:none;
+justify-content:center;
+padding:40px;
 }
 
-footer {
-  margin: 60px 0 30px;
-  opacity: 0;
-  animation: fadeMenu 1.5s ease forwards;
+/* FOOTER */
+
+footer{
+text-align:center;
+margin:60px 0 30px;
+opacity:0.7;
+font-size:0.9rem;
 }
+
+/* ANIMAÇÃO */
+
+@keyframes fadeUp{
+from{
+opacity:0;
+transform:translateY(40px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+/* MOBILE */
+
+@media(max-width:600px){
+
+.hero h1{
+font-size:2.2rem;
+}
+
+.card{
+width:90%;
+}
+
+header{
+padding:20px;
+}
+
+}
+
 </style>
 </head>
+
 <body>
 
 <header>
-  <div class="menu-btn" onclick="toggleMenu()">
-    <div></div>
-    <div></div>
-    <div></div>
-  </div>
 
-  <div class="dropdown" id="menu">
-    <a href="#" onclick="showHome()">Início</a>
-    <a href="#" onclick="showTerms()">Termos</a>
-    <a href="https://discord.gg/p7nfy2DDJv" target="_blank">Suporte</a>
-  </div>
+<div class="logo">🤖 Thzin Bots</div>
+
+<div class="menu-btn" onclick="toggleMenu()">
+<div></div>
+<div></div>
+<div></div>
+</div>
+
+<div class="dropdown" id="menu">
+<a href="#" onclick="showHome()">Início</a>
+<a href="#" onclick="showTerms()">Termos</a>
+<a href="https://discord.gg/p7nfy2DDJv" target="_blank">Suporte</a>
+</div>
+
 </header>
+
+<section class="hero">
 
 <h1>🚀 Painel de Bots Gratuitos</h1>
 <p>Escolha um bot abaixo e convide para seu servidor</p>
 
-<div class="container" id="home">
-  <div class="card">
-    <h2>💰 Salles Bot</h2>
-    <ul class="features">
-      <li>Bot de vendas</li>
-      <li>Pagamento manual sem taxa</li>
-      <li>Sistema completo de carrinhos</li>
-      <li>Sistema completo de logs e cupons</li>
-      <li>Sistema completo de feedback</li>
-      <li>Sistema completo de ranking e perfil de cliente</li>
-      <li>Segurança de dados</li>
-      <li>Divulgação na bio do bot</li>
-    </ul>
-    <button class="btn"
-    onclick="window.location.href='https://discord.com/oauth2/authorize?client_id=1474231946400760020&permissions=8&integration_type=0&scope=bot+applications.commands'">
-    Convidar Bot
-    </button>
-  </div>
+<div class="vantagens">
 
-  <div class="card">
-    <h2>🎫 E-Pro Bot</h2>
-    <ul class="features">
-      <li>Bot de tickets</li>
-      <li>Sistema completo de tickets</li>
-      <li>Configurações simples</li>
-      <li>Sistema de painel com botão</li>
-      <li>Sistema de menu com várias opções</li>
-      <li>Sistema de logs e feedback</li>
-      <li>Divulgação na bio do bot</li>
-    </ul>
-    <button class="btn"
-    onclick="window.location.href='https://discord.com/oauth2/authorize?client_id=1470596365930332242&permissions=8&integration_type=0&scope=bot+applications.commands'">
-    Convidar Bot
-    </button>
-  </div>
+<div class="vantagem">⚡ 24h Online</div>
+<div class="vantagem">🔒 Segurança de dados</div>
+<div class="vantagem">⚙️ Configuração fácil</div>
+<div class="vantagem">💬 Suporte ativo</div>
+
 </div>
 
-<!-- CARD DOS TERMOS RESTAURADO -->
+</section>
+
+<div class="container" id="home">
+
+<div class="card">
+
+<h2>💰 Salles Bot</h2>
+
+<ul class="features">
+<li>Bot de vendas</li>
+<li>Pagamento manual sem taxa</li>
+<li>Sistema completo de carrinhos</li>
+<li>Logs e cupons</li>
+<li>Feedback de clientes</li>
+<li>Ranking de compradores</li>
+<li>Segurança de dados</li>
+<li>Divulgação na bio do bot</li>
+</ul>
+
+<button class="btn"
+onclick="window.location.href='https://discord.com/oauth2/authorize?client_id=1474231946400760020&permissions=8&scope=bot+applications.commands'">
+🤖 Convidar Bot
+</button>
+
+</div>
+
+<div class="card">
+
+<h2>🎫 E-Pro Bot</h2>
+
+<ul class="features">
+<li>Sistema completo de tickets</li>
+<li>Configurações simples</li>
+<li>Painéis com botões</li>
+<li>Menu com múltiplas opções</li>
+<li>Sistema de logs</li>
+<li>Sistema de feedback</li>
+<li>Divulgação na bio do bot</li>
+</ul>
+
+<button class="btn"
+onclick="window.location.href='https://discord.com/oauth2/authorize?client_id=1470596365930332242&permissions=8&scope=bot+applications.commands'">
+🤖 Convidar Bot
+</button>
+
+</div>
+
+</div>
+
 <div id="termos">
-  <div class="card">
-    <h2>📜 Termos de Uso</h2>
-    <ul class="features">
-      <li>Não utilize os bots para esquemas maliciosos ou fraudulentos</li>
-      <li>Proibido uso ilegal</li>
-      <li>Acesso pode ser revogado a qualquer momento, pelo desenvolvedor caso aja mal uso do bot</li>
-      <li>Nossa equipe terá acesso a todos os dados de configuração de qualquer bot do painel</li>
-      <li>Ao usar, você concorda com os termos</li>
-    </ul>
-  </div>
+
+<div class="card">
+
+<h2>📜 Termos de Uso</h2>
+
+<ul class="features">
+<li>Não utilize os bots para atividades maliciosas</li>
+<li>Proibido uso ilegal</li>
+<li>O acesso pode ser revogado em caso de abuso</li>
+<li>Algumas informações podem ser armazenadas para funcionamento do sistema</li>
+<li>Ao utilizar os bots você concorda com estes termos</li>
+</ul>
+
+</div>
+
 </div>
 
 <footer>
-© 2026 - Thzin Store | Bots Gratuitos.
+© 2026 - Thzin Store | Bots Gratuitos
 </footer>
 
 <script>
+
 function toggleMenu(){
-  document.getElementById("menu").classList.toggle("active");
+document.getElementById("menu").classList.toggle("active");
 }
 
 function showTerms(){
-  document.getElementById("home").style.display="none";
-  document.getElementById("termos").style.display="flex";
-  toggleMenu();
+document.getElementById("home").style.display="none";
+document.getElementById("termos").style.display="flex";
+toggleMenu();
 }
 
 function showHome(){
-  document.getElementById("home").style.display="flex";
-  document.getElementById("termos").style.display="none";
-  toggleMenu();
+document.getElementById("home").style.display="flex";
+document.getElementById("termos").style.display="none";
+toggleMenu();
 }
+
 </script>
 
 </body>
