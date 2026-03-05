@@ -1,168 +1,245 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <title>Painel de Bots Gratuitos</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<title>Painel de Bots Gratuitos</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: linear-gradient(135deg, #0f0f1a, #1a1a2e);
-      color: white;
-      text-align: center;
-      animation: fadeIn 1s ease-in-out;
-    }
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #0f0f1a, #1a1a2e);
+  color: white;
+  text-align: center;
+  animation: fadeIn 1s ease-in-out;
+}
 
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
 
-    h1 {
-      margin-top: 40px;
-      font-size: 2.5rem;
-    }
+h1 {
+  margin-top: 40px;
+  font-size: 2.5rem;
+}
 
-    .container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 30px;
-      margin: 50px 20px;
-    }
+/* MENU */
+.menu-btn {
+  position: fixed;
+  top: 20px;
+  right: 25px;
+  cursor: pointer;
+  z-index: 1000;
+}
 
-    .card {
-      background: #202040;
-      border-radius: 15px;
-      padding: 25px;
-      width: 320px;
-      box-shadow: 0 0 20px rgba(0,0,0,0.5);
-      transition: all 0.4s ease;
-      opacity: 0;
-      transform: translateY(30px);
-      animation: slideUp 0.8s ease forwards;
-    }
+.menu-btn div {
+  width: 30px;
+  height: 4px;
+  background: white;
+  margin: 6px 0;
+  border-radius: 2px;
+  transition: 0.3s;
+}
 
-    .card:nth-child(1) {
-      animation-delay: 0.2s;
-    }
+.dropdown {
+  position: fixed;
+  top: 70px;
+  right: 25px;
+  background: #202040;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.6);
+  overflow: hidden;
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: 0.3s ease;
+}
 
-    .card:nth-child(2) {
-      animation-delay: 0.4s;
-    }
+.dropdown a {
+  display: block;
+  padding: 12px 20px;
+  color: white;
+  text-decoration: none;
+  transition: 0.3s;
+}
 
-    @keyframes slideUp {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
+.dropdown a:hover {
+  background: #5865F2;
+}
 
-    .card:hover {
-      transform: translateY(-12px) scale(1.02);
-      box-shadow: 0 0 35px rgba(0,0,0,0.8);
-    }
+.dropdown.active {
+  transform: scaleY(1);
+}
 
-    .card h2 {
-      margin-bottom: 10px;
-    }
+/* CONTAINER */
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  margin: 50px 20px;
+}
 
-    .features {
-      list-style: none;
-      padding-left: 0;
-      text-align: left;
-      margin-top: 15px;
-      font-size: 0.95rem;
-      line-height: 1.6;
-    }
+.card {
+  background: #202040;
+  border-radius: 15px;
+  padding: 25px;
+  width: 320px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.5);
+  transition: all 0.4s ease;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: slideUp 0.8s ease forwards;
+}
 
-    .features li {
-      margin-bottom: 6px;
-    }
+@keyframes slideUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
-    .features li::before {
-      content: "✔ ";
-      color: #00ff88;
-      font-weight: bold;
-    }
+.card:hover {
+  transform: translateY(-12px) scale(1.02);
+  box-shadow: 0 0 35px rgba(0,0,0,0.8);
+}
 
-    .btn {
-      margin-top: 20px;
-      padding: 12px 20px;
-      border: none;
-      border-radius: 8px;
-      background: #5865F2;
-      color: white;
-      cursor: pointer;
-      font-size: 1rem;
-      transition: all 0.3s ease;
-    }
+.features {
+  list-style: none;
+  padding-left: 0;
+  text-align: left;
+  margin-top: 15px;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
 
-    .btn:hover {
-      background: #4752c4;
-      transform: scale(1.05);
-      box-shadow: 0 0 15px #5865F2;
-    }
+.features li {
+  margin-bottom: 6px;
+}
 
-    footer {
-      margin: 40px 0;
-      opacity: 0.6;
-      font-size: 0.9rem;
-    }
-  </style>
+.features li::before {
+  content: "✔ ";
+  color: #00ff88;
+  font-weight: bold;
+}
+
+.btn {
+  margin-top: 20px;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  background: #5865F2;
+  color: white;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.btn:hover {
+  background: #4752c4;
+  transform: scale(1.05);
+  box-shadow: 0 0 15px #5865F2;
+}
+
+footer {
+  margin: 40px 0;
+  opacity: 0.6;
+  font-size: 0.9rem;
+}
+
+/* TERMOS (OCULTO) */
+#termos {
+  display: none;
+  justify-content: center;
+  margin-top: 50px;
+}
+</style>
 </head>
 <body>
 
-  <h1>🚀 Painel de Bots Gratuitos</h1>
-  <p>Escolha um bot abaixo e convide para seu servidor!</p>
+<!-- MENU -->
+<div class="menu-btn" onclick="toggleMenu()">
+  <div></div>
+  <div></div>
+  <div></div>
+</div>
 
-  <div class="container">
+<div class="dropdown" id="menu">
+  <a href="#" onclick="showHome()">Início</a>
+  <a href="#" onclick="showTerms()">Termos</a>
+  <a href="https://discord.gg/p7nfy2DDJv" target="_blank">Suporte</a>
+</div>
 
-    <div class="card">
-      <h2>💰 Salles Bot</h2>
-      <ul class="features">
-        <li>Bot de vendas</li>
-        <li>Pagamento manual (sem nenhuma taxa)</li>
-        <li>Sistema completo de carrinhos</li>
-        <li>Sistema completo de logs e cupons</li>
-        <li>Sistema completo de feedback</li>
-        <li>Sistema de ranking e perfil de compra</li>
-        <li>Segurança dos dados</li>
-        <li>Divulgação na bio (sobre mim) do bot</li>
-      </ul>
-      <button class="btn"
-        oncopy="return false"
-        onclick="window.location.href='https://discord.com/oauth2/authorize?client_id=1474231946400760020&permissions=8&integration_type=0&scope=bot+applications.commands'">
-        Convidar Bot
-      </button>
-    </div>
+<h1 id="titulo">🚀 Painel de Bots Gratuitos</h1>
+<p id="subtitulo">Escolha um bot abaixo e convide para seu servidor!</p>
 
-    <div class="card">
-      <h2>🎫 E-Pro Bot</h2>
-      <ul class="features">
-        <li>Bot de tickets</li>
-        <li>Sistema de ticket completo</li>
-        <li>Configurações fáceis</li>
-        <li>Pagamento manual integrado ao ticket</li>
-        <li>Sistema de painel com um botão</li>
-        <li>Menu com select menu e diversas opções</li>
-        <li>Sistema completo de logs e feedback</li>
-        <li>Divulgação na bio (sobre mim) do bot</li>
-      </ul>
-      <button class="btn"
-        oncopy="return false"
-        onclick="window.location.href='https://discord.com/oauth2/authorize?client_id=1470596365930332242&permissions=8&integration_type=0&scope=bot+applications.commands'">
-        Convidar Bot
-      </button>
-    </div>
+<!-- PAINEL PRINCIPAL -->
+<div class="container" id="home">
 
+  <div class="card">
+    <h2>💰 Salles Bot</h2>
+    <ul class="features">
+      <li>Bot de vendas</li>
+      <li>Pagamento manual</li>
+      <li>Sistema completo de carrinhos</li>
+      <li>Logs e cupons</li>
+      <li>Feedback</li>
+      <li>Ranking de compras</li>
+      <li>Segurança dos dados</li>
+      <li>Divulgação na bio</li>
+    </ul>
   </div>
 
-  <footer>
-    © 2026 - Seus Bots Gratuitos | Todos os direitos reservados
-  </footer>
+  <div class="card">
+    <h2>🎫 E-Pro Bot</h2>
+    <ul class="features">
+      <li>Bot de tickets</li>
+      <li>Sistema completo</li>
+      <li>Configurações fáceis</li>
+      <li>Painel com botão</li>
+      <li>Select menu com opções</li>
+      <li>Logs e feedback</li>
+      <li>Divulgação na bio</li>
+    </ul>
+  </div>
+
+</div>
+
+<!-- TERMOS -->
+<div id="termos">
+  <div class="card">
+    <h2>📜 Termos de Uso</h2>
+    <ul class="features">
+      <li>Uso permitido apenas conforme regras do Discord</li>
+      <li>Proibido uso para atividades ilegais</li>
+      <li>O desenvolvedor pode remover acesso a qualquer momento</li>
+      <li>Ao usar o bot, você concorda com os termos</li>
+    </ul>
+  </div>
+</div>
+
+<footer>
+© 2026 - Seus Bots Gratuitos
+</footer>
+
+<script>
+function toggleMenu() {
+  document.getElementById("menu").classList.toggle("active");
+}
+
+function showTerms() {
+  document.getElementById("home").style.display = "none";
+  document.getElementById("termos").style.display = "flex";
+  toggleMenu();
+}
+
+function showHome() {
+  document.getElementById("home").style.display = "flex";
+  document.getElementById("termos").style.display = "none";
+  toggleMenu();
+}
+</script>
 
 </body>
 </html>
