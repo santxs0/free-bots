@@ -71,16 +71,36 @@ body {
   transform: scaleY(1);
 }
 
-/* TÍTULO (AGORA MAIS PRÓXIMO DO MENU) */
+/* TÍTULO ANIMADO */
 h1 {
-  margin-top: 70px;
-  font-size: 2.6rem;
+  margin-top: 110px;
+  font-size: 2.8rem;
   font-weight: 700;
+  opacity: 0;
+  transform: translateY(40px);
+  animation: fadeTitle 1s ease forwards;
+}
+
+@keyframes fadeTitle {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 p {
-  opacity: 0.7;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeSub 1.2s ease forwards;
+  animation-delay: 0.3s;
   margin-bottom: 40px;
+}
+
+@keyframes fadeSub {
+  to {
+    opacity: 0.7;
+    transform: translateY(0);
+  }
 }
 
 /* CONTAINER */
@@ -106,8 +126,8 @@ p {
   transform: translateY(40px);
 }
 
-.card:nth-child(1){ animation-delay: 0.2s; }
-.card:nth-child(2){ animation-delay: 0.4s; }
+.card:nth-child(1){ animation-delay: 0.6s; }
+.card:nth-child(2){ animation-delay: 0.8s; }
 
 @keyframes fadeUp {
   to {
