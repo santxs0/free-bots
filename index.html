@@ -55,7 +55,6 @@ header {
   background: white;
   margin: 5px 0;
   border-radius: 3px;
-  transition: 0.4s;
 }
 
 .dropdown {
@@ -69,7 +68,7 @@ header {
   transform: scaleY(0);
   transform-origin: top;
   transition: 0.3s ease;
-  z-index: 4000; /* AGORA FICA NA FRENTE DE TUDO */
+  z-index: 4000;
   box-shadow: 0 15px 40px rgba(0,0,0,0.6);
 }
 
@@ -144,9 +143,6 @@ p {
   transform: translateY(40px);
 }
 
-.card:nth-child(1){ animation-delay: 0.6s; }
-.card:nth-child(2){ animation-delay: 0.8s; }
-
 @keyframes fadeUp {
   to {
     opacity: 1;
@@ -192,6 +188,7 @@ p {
   box-shadow: 0 0 20px #5865F2;
 }
 
+/* TERMOS */
 #termos {
   display: none;
   justify-content: center;
@@ -225,7 +222,6 @@ footer {
 <p>Escolha um bot abaixo e convide para seu servidor</p>
 
 <div class="container" id="home">
-
   <div class="card">
     <h2>💰 Salles Bot</h2>
     <ul class="features">
@@ -259,7 +255,19 @@ footer {
     Convidar Bot
     </button>
   </div>
+</div>
 
+<!-- CARD DOS TERMOS RESTAURADO -->
+<div id="termos">
+  <div class="card">
+    <h2>📜 Termos de Uso</h2>
+    <ul class="features">
+      <li>Uso conforme as regras do Discord</li>
+      <li>Proibido uso ilegal</li>
+      <li>Acesso pode ser revogado a qualquer momento</li>
+      <li>Ao usar, você concorda com os termos</li>
+    </ul>
+  </div>
 </div>
 
 <footer>
