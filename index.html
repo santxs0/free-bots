@@ -6,6 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
+
 /* ===================== BODY E FUNDO ===================== */
 body {
   margin: 0;
@@ -92,15 +93,22 @@ p {
 
 /* ===================== VANTAGENS ===================== */
 .vantagens {
-  display: grid; grid-template-columns: repeat(2, 100px);
-  justify-content: center; gap: 15px; margin-bottom: 35px;
+  display: grid;
+  grid-template-columns: repeat(2, 120px);
+  justify-content: center;
+  gap: 15px;
+  margin: 0 20px 35px 20px;
 }
 
 .vantagem {
   background: rgba(32,32,64,.7);
-  padding: 16px 4px; border-radius: 10px;
-  font-size: 1rem; opacity: 0; transform: translateY(20px);
-  animation: vantAnim .8s forwards; box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+  padding: 16px 8px;
+  border-radius: 10px;
+  font-size: 1rem;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: vantAnim .8s forwards;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.4);
 }
 
 .vantagem:nth-child(1){animation-delay:.5s}
@@ -112,17 +120,25 @@ p {
 
 /* ===================== CONTAINER ===================== */
 .container {
-  display: grid; grid-template-columns: repeat(2, 260px);
-  justify-content: center; gap: 30px; padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(2, 260px);
+  justify-content: center;
+  gap: 30px;
+  padding: 20px;
 }
 
 /* ===================== CARDS ===================== */
 .card {
-  background: rgba(32,32,64,0.8); backdrop-filter: blur(15px);
-  border-radius: 20px; padding: 22px; width: 260px;
+  background: rgba(32,32,64,0.8);
+  backdrop-filter: blur(15px);
+  border-radius: 20px;
+  padding: 24px;
+  width: 260px;
   box-shadow: 0 10px 30px rgba(0,0,0,0.6);
-  transition: all .3s ease; border: 2px solid transparent;
-  opacity: 0; transform: translateY(40px);
+  transition: all .3s ease;
+  border: 2px solid transparent;
+  opacity: 0;
+  transform: translateY(40px);
   animation: cardFade 0.8s forwards;
 }
 
@@ -139,34 +155,55 @@ p {
 
 /* ===================== BOT HEADER ===================== */
 .bot-header {
-  display: flex; align-items: center; gap: 10px;
-  justify-content: center; margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 10px;
 }
 
-.bot-avatar { width: 40px; height: 40px; border-radius: 50%; }
+.bot-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
 
 /* ===================== FEATURES ===================== */
 .features {
-  list-style: none; padding: 0; text-align: left;
-  line-height: 1.6; font-size: .95rem;
+  list-style: none;
+  padding: 0 12px;
+  text-align: left;
+  line-height: 1.6;
+  font-size: .95rem;
 }
 
-.features li { margin-bottom: 6px; }
+.features li {
+  margin-bottom: 6px;
+}
 
 .features li::before {
-  content: "✔ "; color: #00ff88; font-weight: bold;
+  content: "✔ ";
+  color: #00ff88;
+  font-weight: bold;
 }
 
 /* ===================== BOTÕES ===================== */
 .btn {
-  margin-top: 15px; padding: 14px 28px; border: none; border-radius: 12px;
-  background: linear-gradient(45deg,#5865F2,#7b86ff); color: white;
-  font-size: 1.1rem; cursor: pointer; transition: all .3s ease;
+  margin-top: 15px;
+  padding: 14px 28px;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(45deg,#5865F2,#7b86ff);
+  color: white;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all .3s ease;
   box-shadow: 0 4px 15px rgba(0,0,0,0.5);
 }
 
 .btn:hover {
-  transform: scale(1.05); box-shadow: 0 0 15px #7b86ff, 0 4px 15px rgba(0,0,0,0.5);
+  transform: scale(1.05);
+  box-shadow: 0 0 15px #7b86ff, 0 4px 15px rgba(0,0,0,0.5);
 }
 
 .btn:active {
@@ -175,26 +212,54 @@ p {
 }
 
 /* ===================== TERMOS ===================== */
-#termos { display: none; justify-content: center; padding: 40px; }
+#termos {
+  display: none;
+  justify-content: center;
+  padding: 40px;
+}
 
 /* ===================== FOOTER ===================== */
-footer { margin: 60px 0 30px 0; opacity:.7; text-shadow: 1px 1px 3px rgba(0,0,0,0.5); }
+footer {
+  margin: 60px 0 30px 0;
+  opacity:.7;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+}
 
 /* ===================== MOBILE ===================== */
 @media(max-width:700px){
-  .container {grid-template-columns:1fr;}
-  .card {width:90%;}
-  .vantagens {grid-template-columns:1fr 1fr;}
+
+  .container {
+    grid-template-columns:1fr;
+  }
+
+  .card {
+    width:87%;
+    padding:24px;
+  }
+
+  .vantagens {
+    grid-template-columns:1fr 1fr;
+    margin: 0 25px 35px 25px;
+  }
+
+  .features{
+    padding:0 18px;
+  }
+
 }
+
 </style>
 </head>
 
 <body>
+
 <header>
   <div class="logo">🤖 Thzin Bots</div>
+
   <div class="menu-btn" onclick="toggleMenu()">
     <div></div><div></div><div></div>
   </div>
+
   <div class="dropdown" id="menu">
     <a href="#" onclick="showHome()">Início</a>
     <a href="#" onclick="showTerms()">Termos</a>
@@ -203,6 +268,7 @@ footer { margin: 60px 0 30px 0; opacity:.7; text-shadow: 1px 1px 3px rgba(0,0,0,
 </header>
 
 <div class="divider"></div>
+
 <h1>🚀 Painel de Bots Gratuitos</h1>
 <p>Escolha um bot abaixo e convide para seu servidor</p>
 
@@ -214,11 +280,13 @@ footer { margin: 60px 0 30px 0; opacity:.7; text-shadow: 1px 1px 3px rgba(0,0,0,
 </div>
 
 <div class="container" id="home">
+
   <div class="card">
     <div class="bot-header">
       <img class="bot-avatar" src="https://raw.githubusercontent.com/santxs0/free-bots/main/1772252578227.png">
       <h2>Salles Bot</h2>
     </div>
+
     <ul class="features">
       <li>Bot de vendas completo.</li>
       <li>Pagamento manual com 0% de taxa.</li>
@@ -230,7 +298,10 @@ footer { margin: 60px 0 30px 0; opacity:.7; text-shadow: 1px 1px 3px rgba(0,0,0,
       <li>Segurança reforçada.</li>
       <li>Divulgação do servidor na bio do bot.</li>
     </ul>
-    <button class="btn" onclick="window.location.href='https://discord.com/oauth2/authorize?client_id=1474231946400760020&permissions=8&scope=bot+applications.commands'">Convidar Bot</button>
+
+    <button class="btn" onclick="window.location.href='https://discord.com/oauth2/authorize?client_id=1474231946400760020&permissions=8&scope=bot+applications.commands'">
+      Convidar Bot
+    </button>
   </div>
 
   <div class="card">
@@ -238,6 +309,7 @@ footer { margin: 60px 0 30px 0; opacity:.7; text-shadow: 1px 1px 3px rgba(0,0,0,
       <img class="bot-avatar" src="https://raw.githubusercontent.com/santxs0/free-bots/main/1771221576632.png">
       <h2>E-Pro Bot</h2>
     </div>
+
     <ul class="features">
       <li>Bot de ticket completo.</li>
       <li>Configurações simples e intuitivas.</li>
@@ -249,13 +321,18 @@ footer { margin: 60px 0 30px 0; opacity:.7; text-shadow: 1px 1px 3px rgba(0,0,0,
       <li>Segurança reforçada.</li>
       <li>Divulgação do servidor na bio do bot.</li>
     </ul>
-    <button class="btn" onclick="window.location.href='https://discord.com/oauth2/authorize?client_id=1470596365930332242&permissions=8&scope=bot+applications.commands'">Convidar Bot</button>
+
+    <button class="btn" onclick="window.location.href='https://discord.com/oauth2/authorize?client_id=1470596365930332242&permissions=8&scope=bot+applications.commands'">
+      Convidar Bot
+    </button>
   </div>
+
 </div>
 
 <div id="termos">
   <div class="card">
     <h2>📜 Termos de Uso</h2>
+
     <ul class="features">
       <li>Utilize os bots para fins legais e dentro das regras do discord.</li>
       <li>Os dados coletados são apenas para o funcionamento dos bots.</li>
@@ -272,9 +349,22 @@ footer { margin: 60px 0 30px 0; opacity:.7; text-shadow: 1px 1px 3px rgba(0,0,0,
 </footer>
 
 <script>
-function toggleMenu(){document.getElementById("menu").classList.toggle("active");}
-function showTerms(){document.getElementById("home").style.display="none";document.getElementById("termos").style.display="flex";toggleMenu();}
-function showHome(){document.getElementById("home").style.display="grid";document.getElementById("termos").style.display="none";toggleMenu();}
+function toggleMenu(){
+document.getElementById("menu").classList.toggle("active");
+}
+
+function showTerms(){
+document.getElementById("home").style.display="none";
+document.getElementById("termos").style.display="flex";
+toggleMenu();
+}
+
+function showHome(){
+document.getElementById("home").style.display="grid";
+document.getElementById("termos").style.display="none";
+toggleMenu();
+}
 </script>
+
 </body>
 </html>
