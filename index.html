@@ -432,7 +432,7 @@ const menuDropdown = document.getElementById('menu-dropdown');
 const config1 = document.getElementById('config-1');
 
 const API_KEY = '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';
-const MODEL = 'llama3-70b-8192';
+const MODEL = 'llama-3.3-70b-versatile';
 
 const conversation = []; // ⬅️ Armazena o histórico da conversa
 
@@ -464,6 +464,7 @@ function animateTyping(text) {
 
 async function fetchAIResponse() {
   try {
+
     const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
       method: 'POST',
       headers: {
@@ -472,14 +473,28 @@ async function fetchAIResponse() {
       },
       body: JSON.stringify({
         model: MODEL,
-        messages: conversation // ⬅️ Envia todo o histórico da conversa
+        messages: conversation
       })
     });
 
     const data = await response.json();
-    return data.choices?.[0]?.message?.content || '❌ Erro na resposta da IA.';
+
+    // Mostra erro da API se existir
+    if (data.error) {
+      return `❌ ERRO DA API:\n${data.error.message}`;
+    }
+
+    // Caso a resposta venha em formato inesperado
+    if (!data.choices || !data.choices[0]) {
+      return `❌ Resposta inesperada da API:\n${JSON.stringify(data, null, 2)}`;
+    }
+
+    return data.choices[0].message.content;
+
   } catch (error) {
-    return '❌ Erro de conexão com a API.';
+
+    return `❌ ERRO DE CONEXÃO:\n${error.message}`;
+
   }
 }
 
